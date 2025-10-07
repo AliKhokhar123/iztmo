@@ -28,7 +28,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 1rem;
+    padding: 1rem;
     position: relative;
 }
 
@@ -49,6 +49,7 @@ body {
 
 .hero h1 {
     font-size: 2.8rem;
+    line-height: 46px;
     font-weight: 700;
     color: #222;
     margin-bottom: 2rem;
@@ -469,5 +470,46 @@ body {
 
     .footer-person img {
         max-height: 300px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 30px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        gap: 7px;
+        background: none;
+    }
+
+    .app-links {
+        margin-top: 7.5rem;
+        z-index: -1;
+    }
+
+    .search-btn {
+        width: 100%;
+        border-radius: 28px;
+        z-index: -1;
+    }
+
+    .search-bar input {
+        width: 100%;
+        border-radius: 30px;
+        background-color: white;
+        border: none;
+        padding: 25px 20px;
+        z-index: -1;
+    }
+
+    .custom-dropdown {
+        background: white;
+        width: 100%;
+        border-radius: 30px;
+        padding: 9px 25px;
+
     }
 }
