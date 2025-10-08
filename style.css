@@ -477,8 +477,8 @@ body {
 
 @media (max-width: 500px) {
     .hero h1 {
-        font-size: 1.8rem;
-        line-height: 30px;
+        font-size: 2.8rem;
+        line-height: 50px;
     }
 
     .search-bar {
@@ -489,7 +489,7 @@ body {
 
     .app-links {
         margin-top: 7.5rem;
-        z-index: -1;
+        z-index: 0;
     }
 
     .search-btn {
