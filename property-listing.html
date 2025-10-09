@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/property-listing.css">
+</head>
+
+<body>
+
+    <div class="page-container">
+        <button id="openModalBtn" class="cta-button">View Property</button>
+    </div>
+
+    <div id="propertyModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-main-content">
+                <div class="modal-header">
+                    <div class="property-location">
+                        <i class="material-icons">location_on</i>
+                        <span>X3BC+HM El Iguano, Panama</span>
+                    </div>
+                    <button class="close-button">&times;</button>
+                </div>
+
+                <div class="property-gallery">
+                    <img id="mainPropertyImage" class="main-image"
+                        src="./images/house-images/1.jpg"
+                        alt="Main Property Image">
+                    <div class="thumbnail-images">
+                        <img class="thumb active" src="./images/house-images/1.jpg"
+                            alt="Thumbnail 1">
+                        <img class="thumb" src="./images/house-images/2.jpg"
+                            alt="Thumbnail 2">
+                        <img class="thumb" src="./images/house-images/3.jpg"
+                            alt="Thumbnail 3">
+                        <img class="thumb" src="./images/house-images/4.jpeg"
+                            alt="Thumbnail 4">
+                    </div>
+                </div>
+
+                <div class="property-features">
+                    <h3>Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="material-icons">hotel</i>
+                            <span>1 Bed</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="material-icons">bathtub</i>
+                            <span>1 Bath</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="material-icons">directions_car</i>
+                            <span>1 Parking</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="material-icons">square_foot</i>
+                            <span>1200 m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-description">
+                    <h3>Description</h3>
+                    <p>This is a modern and spacious property located in a prime area. It features a stunning view and
+                        comes with all the modern amenities. The property is perfect for a small family or as an
+                        investment opportunity.</p>
+                </div>
+            </div>
+
+            <div class="modal-sidebar">
+                <div class="sidebar-content">
+                    <div class="price-section">
+                        <span class="price">$500</span>
+                        <div class="price-actions">
+                            <button class="icon-button"><i class="material-icons">share</i></button>
+                            <button class="icon-button"><i class="material-icons">favorite_border</i></button>
+                        </div>
+                    </div>
+
+                    <div class="owner-info">
+                        <div class="owner-avatar"><img src="./images/profile-image.png" alt=""></div>
+                        <div class="owner-details">
+                            <span class="owner-name">User 2 Test</span>
+                            <span class="owner-role">Propietario Independiente</span>
+                        </div>
+                    </div>
+
+                    <form class="contact-form">
+                        <div class="input-group">
+                            <i class="material-icons">person</i>
+                            <input type="text" placeholder="Name">
+                        </div>
+                        <div class="input-group">
+                            <i class="material-icons">email</i>
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="input-group">
+                            <i class="material-icons">phone</i>
+                            <input type="tel" placeholder="Phone">
+                        </div>
+                        <textarea placeholder="Hello, I am interested in..."></textarea>
+                        <button type="submit" class="contact-button primary">Send Message</button>
+                        <button type="button" class="contact-button secondary">Chat</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const openModalBtn = document.getElementById('openModalBtn');
+            const propertyModal = document.getElementById('propertyModal');
+            const closeButton = document.querySelector('.close-button');
+
+            // Image changer elements
+            const mainPropertyImage = document.getElementById('mainPropertyImage');
+            const thumbnailImages = document.querySelectorAll('.thumbnail-images .thumb');
+
+            openModalBtn.addEventListener('click', () => {
+                propertyModal.classList.add('active');
+            });
+
+            closeButton.addEventListener('click', () => {
+                propertyModal.classList.remove('active');
+            });
+
+            propertyModal.addEventListener('click', (e) => {
+                if (e.target === propertyModal) {
+                    propertyModal.classList.remove('active');
+                }
+            });
+
+            // Image Changer Logic
+            thumbnailImages.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    // Remove active class from all thumbnails
+                    thumbnailImages.forEach(t => t.classList.remove('active'));
+                    // Add active class to the clicked thumbnail
+                    thumb.classList.add('active');
+                    // Change the main image src to the clicked thumbnail's src
+                    mainPropertyImage.src = thumb.src;
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

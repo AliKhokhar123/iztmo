@@ -75,3 +75,6 @@ dropdown.addEventListener('keydown', (e) => {
 document.addEventListener('click', (e) => {
     if (!dropdown.contains(e.target)) openDropdown(false);
 });
+
+
+
