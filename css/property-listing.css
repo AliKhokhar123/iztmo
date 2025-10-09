@@ -358,7 +358,7 @@ h3 {
 @media (max-width: 768px) {
     .modal-content {
         flex-direction: column;
-        max-height: 95vh;
+        max-height: 80vh;
         height: auto;
         overflow-y: auto;
     }
