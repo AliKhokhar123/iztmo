@@ -30,18 +30,13 @@
                 </div>
 
                 <div class="property-gallery">
-                    <img id="mainPropertyImage" class="main-image"
-                        src="./images/house-images/1.jpg"
+                    <img id="mainPropertyImage" class="main-image" src="./images/house-images/1.jpg"
                         alt="Main Property Image">
                     <div class="thumbnail-images">
-                        <img class="thumb active" src="./images/house-images/1.jpg"
-                            alt="Thumbnail 1">
-                        <img class="thumb" src="./images/house-images/2.jpg"
-                            alt="Thumbnail 2">
-                        <img class="thumb" src="./images/house-images/3.jpg"
-                            alt="Thumbnail 3">
-                        <img class="thumb" src="./images/house-images/4.jpeg"
-                            alt="Thumbnail 4">
+                        <img class="thumb active" src="./images/house-images/1.jpg" alt="Thumbnail 1">
+                        <img class="thumb" src="./images/house-images/2.jpg" alt="Thumbnail 2">
+                        <img class="thumb" src="./images/house-images/3.jpg" alt="Thumbnail 3">
+                        <img class="thumb" src="./images/house-images/4.jpeg" alt="Thumbnail 4">
                     </div>
                 </div>
 
@@ -67,11 +62,24 @@
                     </div>
                 </div>
 
-                <div class="property-description">
-                    <h3>Description</h3>
-                    <p>This is a modern and spacious property located in a prime area. It features a stunning view and
-                        comes with all the modern amenities. The property is perfect for a small family or as an
-                        investment opportunity.</p>
+                <div class="property-details-section">
+                    <h3>Available Amenities:</h3>
+                    <div class="amenities-list">
+                        <span class="amenity-tag">Balcony, Patio, Deck</span>
+                        <span class="amenity-tag">Hardwood Floors</span>
+                        <span class="amenity-tag">Maids Quarters</span>
+                    </div>
+
+                    <h2 class="property-title">
+                        Hermosa Casa De 3 Pisos Remodelada En Medio De Ciudad Jardin, Albrook, Panama
+                    </h2>
+
+                    <div class="property-notice">
+                        <p><strong>¿Busca una casa en un barrio seguro y tranquilo?</strong></p>
+                        <p>¡Entonces esta casa en Albrook podría ser la opción perfecta! Aproveche esta oportunidad
+                            única, de comprar en lo que se conoce como “La Ciudad Jardín”, una las áreas revertidas por
+                            los norteamericanos a soberanía panameña...</p>
+                    </div>
                 </div>
             </div>
 
@@ -82,6 +90,7 @@
                         <div class="price-actions">
                             <button class="icon-button"><i class="material-icons">share</i></button>
                             <button class="icon-button"><i class="material-icons">favorite_border</i></button>
+                            <button class="icon-button"><i class="material-icons">download</i></button>
                         </div>
                     </div>
 
@@ -90,6 +99,10 @@
                         <div class="owner-details">
                             <span class="owner-name">User 2 Test</span>
                             <span class="owner-role">Propietario Independiente</span>
+                            <button class="view-phone-btn" data-number="+1 234-567-8900">
+                                <i class="material-icons">phone</i>
+                                <span>View Phone</span>
+                            </button>
                         </div>
                     </div>
 
@@ -121,7 +134,6 @@
             const propertyModal = document.getElementById('propertyModal');
             const closeButton = document.querySelector('.close-button');
 
-            // Image changer elements
             const mainPropertyImage = document.getElementById('mainPropertyImage');
             const thumbnailImages = document.querySelectorAll('.thumbnail-images .thumb');
 
@@ -139,18 +151,35 @@
                 }
             });
 
-            // Image Changer Logic
             thumbnailImages.forEach(thumb => {
                 thumb.addEventListener('click', () => {
-                    // Remove active class from all thumbnails
                     thumbnailImages.forEach(t => t.classList.remove('active'));
-                    // Add active class to the clicked thumbnail
                     thumb.classList.add('active');
-                    // Change the main image src to the clicked thumbnail's src
                     mainPropertyImage.src = thumb.src;
                 });
             });
         });
+
+        const viewPhoneBtn = document.querySelector('.view-phone-btn');
+
+        if (viewPhoneBtn) {
+
+            viewPhoneBtn.dataset.state = 'hidden';
+
+            viewPhoneBtn.addEventListener('click', () => {
+                const phoneNumber = viewPhoneBtn.dataset.number;
+                const currentState = viewPhoneBtn.dataset.state;
+                const phoneSpan = viewPhoneBtn.querySelector('span');
+
+                if (currentState === 'hidden') {
+                    phoneSpan.textContent = phoneNumber;
+                    viewPhoneBtn.dataset.state = 'revealed';
+                } else if (currentState === 'revealed') {
+                    const cleanPhoneNumber = phoneNumber.replace(/[\s-()]/g, '');
+                    window.location.href = `tel:${cleanPhoneNumber}`;
+                }
+            });
+        }
     </script>
 
 </body>

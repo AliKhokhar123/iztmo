@@ -355,6 +355,91 @@ h3 {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Add this to your stylesheet */
+.owner-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* This ensures the button aligns to the left */
+}
+
+.view-phone-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    /* Pill shape */
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.view-phone-btn i {
+    font-size: 16px;
+}
+
+.view-phone-btn:hover {
+    background-color: var(--primary);
+    color: var(--text-dark);
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(247, 156, 36, 0.2);
+    transform: translateY(-2px);
+}
+
+.property-details-section {
+    margin-top: 2rem;
+}
+
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    padding-top: 5px;
+}
+
+.amenity-tag {
+    background-color: #e9eaf0;
+    color: var(--text-medium);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.property-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.property-notice {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.property-notice p {
+    margin-bottom: 0.5rem;
+}
+
+.property-notice p:last-child {
+    margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
     .modal-content {
         flex-direction: column;
