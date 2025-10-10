@@ -225,23 +225,33 @@ h3 {
     padding-bottom: 1.5rem;
 }
 
-.price {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-dark);
+.price-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Increased space between buttons */
 }
 
 .icon-button {
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;  /* Larger touch target */
+    height: 42px; /* Make it square */
+    background-color: #f0f2f5; /* Light background to make it visible */
+    border: 1px solid var(--border-light); /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    color: var(--text-medium); /* Darker icon for better contrast */
+    font-size: 22px; /* Optimal icon size */
     cursor: pointer;
-    transition: color 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
 .icon-button:hover {
-    color: var(--primary);
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff; /* White icon on hover for better contrast */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .owner-info {
