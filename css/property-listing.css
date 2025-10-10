@@ -475,6 +475,10 @@ h3 {
     font-size: 0.9rem;
 }
 
+/* .price {
+    font-weight: 700;
+} */
+
 @media (max-width: 768px) {
     .modal-content {
         flex-direction: column;
@@ -489,6 +493,7 @@ h3 {
         width: 100%;
         height: auto;
         overflow-y: visible;
+        padding: 1rem;
     }
 
     .modal-sidebar {
