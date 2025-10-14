@@ -1,0 +1,337 @@
+/* ======================= General Styles ======================= */
+:root {
+    --primary: #f79c24;
+    --dark: #0e0e0e;
+    --light: #ffffff;
+    --light-bg: #f5f6f8;
+    --text-dark: #333;
+    --text-medium: #555;
+    --icon-yes: #28a745;
+    --icon-no: #dc3545;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.pricing-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-header p {
+    font-size: 1.1rem;
+    color: var(--text-medium);
+}
+
+.pricing-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--dark);
+}
+
+/* ======================= Pricing Cards ======================= */
+.pricing-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.individual-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.professional-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.pricing-card {
+    background: var(--light);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.card-header p {
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+}
+
+.card-price {
+    margin-bottom: 1.5rem;
+}
+
+.price-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    line-height: 1;
+}
+
+.price-desc {
+    color: var(--text-medium);
+    font-weight: 600;
+}
+
+.card-upgrade {
+    background-color: #fff9f0;
+    padding: 0.75rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.gold-text {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.card-features {
+    list-style: none;
+    text-align: left;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    /* Adds nice spacing between feature lines */
+}
+
+.card-features li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-features i {
+    font-size: 1.1rem;
+    color: var(--primary);
+    width: 24px;
+    text-align: center;
+}
+
+.feature-text {
+    line-height: 1.3;
+}
+
+.feature-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.feature-description {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+}
+
+
+.cta-button {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.9rem 1.8rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(247, 156, 36, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(247, 156, 36, 0.5);
+}
+
+/* Popular Badge */
+.pricing-card.popular {
+    border-color: var(--primary);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: -45px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 4rem;
+    transform: rotate(45deg);
+}
+
+
+/* ======================= Feature Table ======================= */
+.feature-table-wrapper {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+}
+
+.feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.feature-table th,
+.feature-table td {
+    padding: 1.25rem 1rem;
+    text-align: left;
+}
+
+.feature-table thead {
+    border-bottom: 2px solid var(--light-bg);
+}
+
+.feature-table th {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.feature-table th:not(:first-child) {
+    text-align: center !important;
+}
+
+.feature-table tbody tr:not(:last-child) {
+    border-bottom: 1px solid var(--light-bg);
+}
+
+.feature-table td:not(:first-child) {
+    text-align: center;
+    font-weight: 600;
+}
+
+.icon-yes {
+    color: var(--icon-yes);
+    font-size: 1.5rem;
+}
+
+.icon-no {
+    color: var(--icon-no);
+    font-size: 1.5rem;
+}
+
+/* ======================= Responsive Styles ======================= */
+@media (max-width: 768px) {
+    .pricing-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .pricing-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .feature-table-wrapper {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .feature-table {
+        min-width: 100%;
+    }
+
+    /* Hide the original table header */
+    .feature-table thead {
+        display: none;
+    }
+
+    .feature-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        padding: 1.25rem;
+    }
+
+    .feature-table tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .feature-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--light-bg);
+        text-align: right;
+    }
+
+    .feature-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* This creates the label text using the data-label from the HTML */
+    .feature-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        text-align: left;
+        color: var(--text-medium);
+    }
+
+    /* Style the first cell as the "Card Title" */
+    .feature-table td:first-child {
+        display: block;
+        text-align: left;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--light-bg);
+    }
+
+    /* Hide the label for the card title cell */
+    .feature-table td:first-child::before {
+        display: none;
+    }
+}
