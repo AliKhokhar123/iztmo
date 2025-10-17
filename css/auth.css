@@ -19,7 +19,8 @@
 }
 
 body {
-    background-color: white;
+    background: url('../images/Gemini_Generated_Image_b8ebfgb8ebfgb8eb.png') center/cover no-repeat;
+    /* background-color: white; */
     color: var(--text-dark);
     line-height: 1.6;
 }
