@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup - Iztmo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/auth.css">
+</head>
+
+<body>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-buttons">
+                <button class="open-modal-btn btn-primary login-btn" data-modal="loginModal">Login</button>
+                <button class="open-modal-btn btn-secondary login-btn" data-modal="signupModal">Signup</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal modal-login">
+        <div class="modal-content glassmorphism-bg">
+            <div class="modal-header">
+                <h2>Sign into your account</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="social-login">
+                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Sign in with Facebook</button>
+                    <button class="social-btn google"><i class="fab fa-google"></i> Sign in with Google</button>
+                    <button class="social-btn apple"><i class="fab fa-apple"></i> Sign in with Apple</button>
+                </div>
+                <div class="or-divider">or</div>
+                <form>
+                    <div class="input-group">
+                        <input type="text" placeholder="Username/Email Address *" required>
+                    </div>
+                    <div class="input-group password-group">
+                        <input type="password" placeholder="Password *" required>
+                        <span class="password-toggle"><i class="fas fa-eye-slash"></i></span>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-container">Remember me
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <a href="#" class="forgot-password-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="cta-button">Login</button>
+                </form>
+                <div class="modal-footer">
+                    Don't have account? <a href="#" class="create-account-link open-modal-btn" data-modal="signupModal"
+                        data-close-modal="loginModal">Create One!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="signupModal" class="modal modal-signup">
+        <div class="modal-content glassmorphism-bg">
+            <div class="modal-header">
+                <h2>Welcome, Sign Up For Free</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p class="signup-intro">Creating an account allows you to access your saved and contacted properties on
+                    any device.</p>
+                <div class="social-login">
+                    <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Sign in with Facebook</button>
+                    <button class="social-btn google"><i class="fab fa-google"></i> Sign in with Google</button>
+                    <button class="social-btn apple"><i class="fab fa-apple"></i> Sign in with Apple</button>
+                </div>
+                <div class="or-divider">or</div>
+                <form>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" placeholder="Firstname *" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" placeholder="Lastname *" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="you-are-select">You Are: *</label>
+                        <select id="you-are-select" required>
+                            <option value="" disabled selected>Searching for Property</option>
+                            <option value="owner">Property Manager</option>
+                            <option value="agent">Real Estate Investor</option>
+                            <option value="independent">Independent LandLord</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email *" required>
+                    </div>
+                    <div class="input-group password-group">
+                        <input type="password" placeholder="Password *" required>
+                        <span class="password-toggle"><i class="fas fa-eye-slash"></i></span>
+                    </div>
+                    <div class="input-group password-group">
+                        <input type="password" placeholder="Confirm Password *" required>
+                        <span class="password-toggle"><i class="fas fa-eye-slash"></i></span>
+                    </div>
+                    <button type="submit" class="cta-button">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openModalBtns = document.querySelectorAll('.open-modal-btn');
+            const modals = document.querySelectorAll('.modal');
+            const passwordToggles = document.querySelectorAll('.password-toggle');
+
+            const openModal = (modalId) => {
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('open');
+                }, 10);
+            };
+
+            const closeModal = (modal) => {
+                if (!modal) return;
+
+                modal.classList.remove('open');
+
+                modal.addEventListener('transitionend', () => {
+                    modal.style.display = 'none';
+                }, { once: true });
+            };
+
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const modalIdToOpen = event.currentTarget.dataset.modal;
+                    const modalIdToClose = event.currentTarget.dataset.closeModal;
+
+                    if (modalIdToClose) {
+                        const modalToClose = document.getElementById(modalIdToClose);
+                        closeModal(modalToClose);
+                    }
+                    openModal(modalIdToOpen);
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('mousedown', (event) => {
+                    if (event.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+
+                const closeBtn = modal.querySelector('.close-btn');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        closeModal(modal);
+                    });
+                }
+            });
+
+            passwordToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const passwordInput = toggle.previousElementSibling;
+                    const icon = toggle.querySelector('i');
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
