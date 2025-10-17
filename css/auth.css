@@ -184,9 +184,12 @@ a:hover {
 }
 
 .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    /* Center the text */
+    position: relative;
+    /* Needed to position the close button */
+    padding: 0 1rem;
+    /* Add some padding for spacing */
     margin-bottom: 2rem;
 }
 
@@ -194,9 +197,18 @@ a:hover {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--dark);
+    margin: 0;
 }
 
 .close-btn {
+    position: absolute;
+    /* Position it relative to the header */
+    top: 50%;
+    /* Center it vertically */
+    right: -10px;
+    /* Adjust as needed for spacing */
+    transform: translateY(-50%);
+    /* Fine-tune vertical alignment */
     color: var(--text-medium);
     font-size: 2.5rem;
     font-weight: bold;
@@ -495,6 +507,11 @@ form {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.modal-header-first {
+    position: relative;
+    margin: 0px 6px;
+    padding: 20px;
+}
 
 @media (max-width: 768px) {
     .modal-header h2 {
