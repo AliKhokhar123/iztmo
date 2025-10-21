@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iztmo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav-bar.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo"><img src="./images/main_logo-removebg-preview.png" alt=""></a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-heart"></i> My Saved Properties</a></li>
+                    <li><a href="#"><i class="fas fa-plus-circle"></i> List a Property</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-secondary">Login</a>
+                    <a href="#" class="btn btn-primary">Signup</a>
+
+                    <div class="language-switcher">
+                        <div class="current-language">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">EN</span>
+                        </div>
+                        <div class="language-dropdown">
+                            <a href="#" data-lang="EN">English</a>
+                            <a href="#" data-lang="ES">Español</a>
+                            <a href="#" data-lang="FR">Français</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="language-switcher" id="languageMobile">
+                <div class="current-language"> <i class="fas fa-globe"></i>
+                    <span class="current-lang-text">EN</span>
+
+                    <div class="language-dropdown">
+                        <a href="#" data-lang="EN">English</a>
+                        <a href="#" data-lang="ES">Español</a>
+                        <a href="#" data-lang="FR">Français</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <button class="mobile-nav-toggle" aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="main-nav" id="mobileNav">
+        <ul>
+            <li><a href="#"><i class="fas fa-heart"></i> My Saved Properties</a></li>
+            <li><a href="#"><i class="fas fa-plus-circle"></i> List a Property</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#" class="btn btn-secondary">Login</a>
+            <a href="#" class="btn btn-primary">Signup</a>
+
+            <div class="language-switcher" id="languageDesktop">
+                <div class="current-language">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang-text">EN</span>
+                </div>
+                <div class="language-dropdown">
+                    <a href="#" data-lang="EN">English</a>
+                    <a href="#" data-lang="ES">Español</a>
+                    <a href="#" data-lang="FR">Français</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+
+        <h1>Encuentra la casa ideal al precio justo</h1>
+
+        <div class="search-toggle">
+            <button class="active">Todo</button>
+            <button>Comprar</button>
+            <button>Alquilar</button>
+        </div>
+
+        <form class="search-bar">
+            <div class="custom-dropdown" id="tipoDropdown" role="button" aria-haspopup="listbox" aria-expanded="false"
+                tabindex="0">
+                <span class="selected-label">Apartamento</span>
+                <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                <div class="dropdown-options" role="listbox">
+                    <div role="option" data-value="Apartamento" aria-selected="true">Apartamento</div>
+                    <div role="option" data-value="Tipo">Tipo</div>
+                    <div role="option" data-value="Casas">Casas</div>
+                    <div role="option" data-value="Oficinas">Oficinas</div>
+                    <div role="option" data-value="Commercial">Commercial</div>
+                    <div role="option" data-value="Propiedades de playa">Propiedades de playa</div>
+                    <div role="option" data-value="Terreros">Terreros</div>
+                    <div role="option" data-value="Propiedades de Islas">Propiedades de Islas</div>
+                </div>
+            </div>
+            <input type="hidden" name="tipo" id="tipoInput" value="Tipo" />
+            <input type="text" placeholder="Ingresa una ubicación">
+            <button type="submit" class="search-btn">Buscar</button>
+        </form>
+
+        <div class="app-links">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Google Play">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+        </div>
+    </section>
+
+    <!-- ======================= About / Feature Section ======================= -->
+
+    <section class="light-about">
+        <div class="light-about-container">
+            <div class="light-about-text">
+                <h2>¿Qué es <span>Iztmo</span>?</h2>
+                <p>
+                    Iztmo.com es una plataforma inmobiliaria moderna que combina tecnología avanzada
+                    con un diseño intuitivo para que comprar, vender o alquilar propiedades sea una experiencia
+                    brillante y sencilla.
+                </p>
+                <div class="light-app-buttons">
+                    <a href="#">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                            alt="App Store">
+                    </a>
+                </div>
+                <p class="light-offer">
+                    Ofrecemos <strong>anuncios ilimitados de forma gratuita</strong> por tiempo limitado.
+                </p>
+                <a href="#" class="light-cta">Publica Ahora Gratis</a>
+            </div>
+
+            <div class="light-about-image">
+                <img src="./images/SmartphoneIZTMO.png" alt="App Preview">
+            </div>
+        </div>
+
+        <div class="light-features">
+            <div class="light-feature-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.E_udBDHC-ymakbJHSoYcCQHaE7?cb=12&pid=Api" alt="">
+                <h3>Vende Rápido</h3>
+                <p>Publica tu propiedad y llega a miles de compradores en minutos.</p>
+            </div>
+            <div class="light-feature-card">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.H_61oTumPYrD8psJKa5higHaE8?cb=12&pid=Api" alt="">
+                <h3>Encuentra Rápido</h3>
+                <p>Explora listados con filtros inteligentes y mapas interactivos.</p>
+            </div>
+            <div class="light-feature-card">
+                <img src="https://tse4.mm.bing.net/th/id/OIP.GOa11KtH5ZKbgzWVtkheggHaGW?cb=12&pid=Api" alt="">
+                <h3>Tecnología Avanzada</h3>
+                <p>Administra tus propiedades fácilmente con nuestras herramientas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-hero">
+        <div class="footer-bg"></div>
+        <div class="footer-person">
+            <img src="./images/MR_IZTMO.png" alt="Iztmo Person">
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <h2>Encuéntranos</h2>
+            <p class="contact-handle">@IZTMO</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Términos de Uso</a>
+                <span>&amp;</span>
+                <a href="#">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="./js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mainNav = document.getElementById('mobileNav');
+
+            if (mobileNavToggle) {
+                mobileNavToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                    mobileNavToggle.classList.toggle('active');
+                });
+            }
+        });
+
+        // ======================= LANGUAGE SWITCHER LOGIC =======================
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Select ALL language switcher components on the page
+            const allLangSwitchers = document.querySelectorAll('.language-switcher');
+
+            // 2. Loop through each switcher to make it work independently
+            allLangSwitchers.forEach(switcher => {
+                // 3. Find the elements INSIDE the current switcher
+                const clickablePart = switcher.querySelector('.current-language');
+                const dropdownMenu = switcher.querySelector('.language-dropdown');
+                const langOptions = switcher.querySelectorAll('.language-dropdown a');
+                const textToUpdate = switcher.querySelector('.current-lang-text'); // Using the new class selector
+
+                if (clickablePart) {
+                    // A. Toggle the dropdown for THIS specific switcher
+                    clickablePart.addEventListener('click', (event) => {
+                        event.stopPropagation(); // Prevents the window click event from firing
+
+                        // Close all other open dropdowns first
+                        closeAllOtherDropdowns(switcher);
+
+                        dropdownMenu.classList.toggle('active');
+                    });
+
+                    // B. Handle language selection for THIS specific switcher
+                    langOptions.forEach(option => {
+                        option.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            const selectedLang = option.getAttribute('data-lang');
+                            textToUpdate.textContent = selectedLang;
+                            // In a real app, you would add your language-changing function here
+                        });
+                    });
+                }
+            });
+
+            // 4. Add a single event listener to the window to close any open dropdown
+            window.addEventListener('click', () => {
+                closeAllOtherDropdowns(null); // Passing null closes all dropdowns
+            });
+
+            // Helper function to close all dropdowns except the one you're interacting with
+            function closeAllOtherDropdowns(currentSwitcher) {
+                allLangSwitchers.forEach(switcher => {
+                    if (switcher !== currentSwitcher) {
+                        switcher.querySelector('.language-dropdown').classList.remove('active');
+                    }
+                });
+            }
+        });
+
+
+        // ======================= ROBUST USER PROFILE DROPDOWN (HANDLES MULTIPLE) =======================
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Select ALL profile menu components on the page
+            const allProfileMenus = document.querySelectorAll('.user-profile-menu');
+
+            // 2. Loop through each menu to make it work independently
+            allProfileMenus.forEach(profileMenu => {
+                // 3. Find the button and dropdown INSIDE the current menu
+                const profileToggleBtn = profileMenu.querySelector('.profile-toggle-btn');
+                const profileDropdown = profileMenu.querySelector('.profile-dropdown');
+
+                if (profileToggleBtn && profileDropdown) {
+                    // A. Toggle the dropdown for THIS specific menu
+                    profileToggleBtn.addEventListener('click', (event) => {
+                        event.stopPropagation(); // Prevents the window click event from closing it immediately
+
+                        // Close any other open profile menus first
+                        closeAllOtherProfileDropdowns(profileMenu);
+
+                        profileDropdown.classList.toggle('active');
+                    });
+                }
+            });
+
+            // 4. Add a single event listener to the window to close ANY open dropdown
+            window.addEventListener('click', () => {
+                closeAllOtherProfileDropdowns(null); // Passing null will close all of them
+            });
+
+            // 5. Helper function to close all dropdowns except the one you're currently interacting with
+            function closeAllOtherProfileDropdowns(currentMenu) {
+                allProfileMenus.forEach(menu => {
+                    if (menu !== currentMenu) {
+                        const dropdown = menu.querySelector('.profile-dropdown');
+                        if (dropdown) {
+                            dropdown.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
