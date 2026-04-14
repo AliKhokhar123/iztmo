@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iztmo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .last-footer {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f79c24;
+        padding: 15px 20px;
+    }
+
+    .last-footer a {
+        text-decoration: none;
+        color: white;
+        padding-left: 10px;
+    }
+
+    .last-footer p {
+        color: white;
+    }
+
+    #mobile-bottom-nav {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        background-color: rgb(255 255 255 / 80%);
+        backdrop-filter: blur(50px);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+        z-index: 998;
+        border-top: 1px solid #e4e4e4;
+    }
+
+    #mobile-bottom-nav ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+
+    #mobile-bottom-nav li {
+        flex: 1;
+    }
+
+    #mobile-bottom-nav a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 8px 0px;
+        color: #333;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 10px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        gap: 4px;
+    }
+
+    #mobile-bottom-nav a i {
+        font-size: 1.25rem;
+    }
+
+    #mobile-bottom-nav a:hover,
+    #mobile-bottom-nav a.active {
+        color: var(--primary);
+    }
+
+    @media (max-width: 992px) {
+        #mobile-bottom-nav {
+            display: block;
+        }
+
+        body {
+            padding-bottom: 65px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .last-footer .right {
+            display: none;
+        }
+
+        .last-footer {
+            justify-content: center;
+            padding: 10px 20px;
+        }
+
+        .last-footer a {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<body>
+    <div class="last-footer">
+        <div class="right">
+            <p>© iztmo.com 2025</p>
+        </div>
+        <div class="left">
+            <a href="">Privacy Policy</a>
+            <a href="">Terms of Service</a>
+            <a href="">Contact Us</a>
+        </div>
+    </div>
+
+    <nav id="mobile-bottom-nav">
+        <ul>
+            <li><a href="#" class="active">
+                    <i class="fas fa-search"></i>
+                    <span>Buscar</span>
+                </a></li>
+            <li><a href="#">
+                    <i class="fas fa-th-list"></i>
+                    <span>Mis Anuncios</span>
+                </a></li>
+            <li><a href="#">
+                    <i class="fas fa-heart"></i>
+                    <span>Guardados</span>
+                </a></li>
+            <li><a href="#">
+                    <i class="fas fa-filter"></i>
+                    <span>Filtros</span>
+                </a></li>
+            <li><a href="#">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensajes</span>
+                </a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

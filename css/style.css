@@ -475,15 +475,12 @@ body {
     padding: 15px 20px;
 }
 
-
-
 .last-footer a {
     text-decoration: none;
     color: white;
     padding-left: 10px;
 }
 
-/* ======================= Mobile Bottom Nav ======================= */
 #mobile-bottom-nav {
     display: none;
     position: fixed;
