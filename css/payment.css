@@ -331,6 +331,11 @@ body {
 }
 
 @media (max-width: 900px) {
+    .dashboard-wrapper {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+    
     .dashboard-inner-container {
         flex-direction: column;
     }
@@ -338,11 +343,25 @@ body {
     .dashboard-sidebar {
         width: 100%;
         border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .dashboard-main {
+        padding: 1rem;
+    }
+    
+    .payment-card-content {
+        padding: 2rem 1.5rem;
     }
     
     .buttons-row {
         flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .btn-payment {
+        width: 100%;
+        white-space: normal !important;
     }
     
     .payment-footer-logos {
@@ -351,10 +370,31 @@ body {
         right: 0;
         margin-top: 2.5rem;
         justify-content: center;
-        width: max-content;
+        width: 100%;
+        gap: 1rem;
     }
     
-    .payment-card-content {
-        padding: 2.5rem 2rem;
+    .payment-footer-logos i {
+        font-size: 2rem;
+    }
+    
+    .payment-card-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .payment-card-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .payment-mini-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .payment-mini-footer a {
+        margin-left: 0;
+        margin: 0 0.5rem;
     }
 }
