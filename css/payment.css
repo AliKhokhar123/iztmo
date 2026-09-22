@@ -173,13 +173,14 @@ body {
 
 /* Summary Formatting */
 .summary-container {
-    background: rgba(255, 255, 255, 0.15);
+    background: #ffffff;
+    color: #333333;
     padding: 1.2rem 1.8rem;
     border-radius: 16px;
     margin-bottom: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     max-width: 450px;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .payment-card-content .summary-line {
@@ -194,7 +195,7 @@ body {
     margin-bottom: 0;
     margin-top: 0.8rem;
     padding-top: 0.8rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.4);
+    border-top: 1px dashed rgba(0, 0, 0, 0.15);
     font-size: 1.2rem;
     font-weight: 700;
 }
