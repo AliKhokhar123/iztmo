@@ -3,32 +3,226 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Publicar Propiedad - iztmo</title>
-    
-    <!-- Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/nav-bar.css">
+    <link rel="stylesheet" href="./css/payment.css">
+
     <!-- Leaflet CSS for Maps -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/add-property.css">
+
+            <style>
+        /* Overrides to make add-property flow sit inside the dashboard properly */
+        body {
+            height: 100vh;
+            overflow: hidden; /* Force dashboard to be app-like, no page scroll */
+            background-image: url('./images/bg-image-v2.png');
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        /* Fix Flexbox shrinking for nested scroll */
+        .dashboard-wrapper {
+            min-height: 0 !important;
+        }
+        .dashboard-inner-container {
+            min-height: 0 !important;
+            flex: 1;
+        }
+        .dashboard-main {
+            min-height: 0 !important;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .add-property-card-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0; /* CRITICAL for inner scroll */
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .ap-progress-container {
+            flex-shrink: 0;
+            z-index: 50;
+            border-radius: 20px 20px 0 0;
+            background: #f5f6f8;
+            width: 100%;
+            height: 4px;
+        }
+
+        .ap-progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 16.66%; 
+            transition: width 0.4s ease;
+        }
+
+        .ap-main {
+            flex: 1;
+            min-height: 0; /* CRITICAL for inner scroll */
+            overflow-y: auto; /* Internal scrollbar */
+            padding: 2rem 3rem;
+        }
+
+        /* Custom Scrollbar for the card */
+        .ap-main::-webkit-scrollbar {
+            width: 8px;
+        }
+        .ap-main::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.03); 
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .ap-main::-webkit-scrollbar-thumb {
+            background: rgba(247, 156, 36, 0.5); /* Brand color transparent */
+            border-radius: 10px;
+        }
+        .ap-main::-webkit-scrollbar-thumb:hover {
+            background: rgba(247, 156, 36, 0.8); 
+        }
+
+        .ap-step-container {
+            padding-bottom: 2rem; /* A little padding so it doesn't stick completely */
+            margin: 0 auto;
+            max-width: 650px;
+        }
+
+        .dropdown-options {
+            z-index: 100 !important;
+            max-height: 180px !important;
+            overflow-y: auto !important;
+        }
+
+        .dropdown-options::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-options::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .dropdown-options::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 6px;
+        }
+
+        .ap-footer-embedded {
+            flex-shrink: 0; /* CRITICAL: footer never shrinks */
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-light);
+            padding: 1.5rem 3rem;
+            z-index: 40;
+            border-radius: 0 0 20px 20px;
+        }
+
+        @media (max-width: 900px) {
+            body { overflow-y: auto; } /* Allow body scroll on mobile */
+            .ap-main { padding: 1.5rem; }
+            .ap-footer-embedded { padding: 1rem 1.5rem; }
+        }
+    </style>
 </head>
 
-<body class="add-property-flow">
 
-    <!-- Progress Bar -->
-    <div class="ap-progress-container">
-        <div class="ap-progress-bar" id="progressBar"></div>
-    </div>
+<body>
+    <!-- Navbar -->
+    <header class="main-header" style="position: sticky;">
+        <div class="header-container">
+            <a href="#" class="logo"><img src="./images/main_logo-removebg-preview.png" alt="" style="height: 40px; filter: brightness(0) invert(1);"></a>
 
-    <!-- Main Content -->
-    <main class="ap-main" id="mainScroll">
+            <nav class="main-nav" id="desktopNav">
+                <ul>
+                    <li><a href="/saved-properties"><i class="fas fa-heart"></i> Mis propiedades guardadas</a></li>
+                    <li><a href="/messages"><i class="fas fa-envelope"></i> Mis mensajes</a></li>
+                    <li><a href="/list-property" class="cta-link"><i class="fas fa-plus-circle"></i> Publicar Anuncio</a>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="user-profile-menu">
+                        <button class="profile-toggle-btn">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                    </div>
+
+                    <div class="language-switcher">
+                        <div class="current-language">
+                            <i class="fas fa-globe"></i>
+                            <span class="current-lang-text">ESPAÑOL</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <button class="mobile-nav-toggle" aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard-inner-container">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#">
+                        <div class="left-part"><i class="fas fa-plus"></i> Publicar Anuncio</div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="left-part"><i class="fas fa-heart"></i> Mis propiedades guardadas</div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="left-part"><i class="fas fa-envelope"></i> Mis mensajes</div>
+                    </a></li>
+                    <li><a href="#" class="premium-link">
+                        <div class="left-part"><i class="fas fa-arrow-up"></i> Premium Listing <span class="badge">new!</span></div>
+                    </a></li>
+                    <li class="active"><a href="#">
+                        <div class="left-part"><i class="fas fa-home"></i> Mis Anuncios <span class="count">60</span></div>
+                        <i class="fas fa-chevron-right chevron"></i>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="left-part"><i class="fas fa-cog"></i> Configuración de la cuenta</div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="left-part"><i class="fas fa-bell"></i> Preferencias de notificación</div>
+                    </a></li>
+                    <li><a href="#">
+                        <div class="left-part"><i class="fas fa-money-bill-alt"></i> Pagos</div>
+                    </a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            
+            <main class="dashboard-main" style="padding: 1rem; flex: 1; display: flex; flex-direction: column;">
+                <div class="add-property-card-content">
+                    <div class="ap-progress-container">
+                        <div class="ap-progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="ap-main" id="mainScroll">
+                        
         
         <!-- STEP 1: Intention & Type -->
         <div class="ap-step-container active" id="step1">
@@ -285,18 +479,36 @@
             </div>
         </div>
 
-    </main>
+    
+                    </div>
+                    <div class="ap-footer-embedded">
+                        <div class="ap-footer-content">
+                            <button class="btn-back" id="btnBack" disabled>Regresar</button>
+                            <button class="btn-next" id="btnNext">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
 
-    <!-- Sticky Footer Navigation -->
-    <footer class="ap-footer">
-        <div class="ap-footer-content">
-            <button class="btn-back" id="btnBack" disabled>Regresar</button>
-            <button class="btn-next" id="btnNext">Continuar</button>
+        </div>
+    </div>
+
+    <!-- Small Footer -->
+    <footer class="payment-mini-footer">
+        <div class="footer-left">
+            © iztmo.com 2026
+        </div>
+        <div class="footer-right">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos de servicio</a>
+            <a href="#">Contáctanos</a>
         </div>
     </footer>
+
 
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./js/add-property.js"></script>
 </body>
+
 </html>
