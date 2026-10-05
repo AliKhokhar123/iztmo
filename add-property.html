@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Publicar Propiedad - iztmo</title>
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/add-property.css">
+</head>
+
+<body class="add-property-flow">
+
+    <!-- Progress Bar -->
+    <div class="ap-progress-container">
+        <div class="ap-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="ap-main" id="mainScroll">
+        
+        <!-- STEP 1: Intention & Type -->
+        <div class="ap-step-container active" id="step1">
+            <h1 class="step-title">Vender o Alquilar?</h1>
+            <p class="step-subtitle">Selecciona los parámetros principales de tu publicación.</p>
+            
+            <div class="form-row" style="margin-top: 2rem;">
+                <div class="form-group">
+                    <label>Intención *</label>
+                    <div class="custom-dropdown" role="button" tabindex="0" style="border: 1px solid #ddd; height: 50px; border-radius: 10px; position: relative;">
+                        <span class="selected-label">Vender o Alquilar?</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                        <div class="dropdown-options" style="width: 100%; top: calc(100% + 5px);">
+                            <div role="option" data-value="Alquiler">Alquiler</div>
+                            <div role="option" data-value="Venta">Venta</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de propiedad *</label>
+                    <div class="custom-dropdown" role="button" tabindex="0" style="border: 1px solid #ddd; height: 50px; border-radius: 10px; position: relative;">
+                        <span class="selected-label">Seleccionar tipo de propiedad ..</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                        <div class="dropdown-options" style="width: 100%; top: calc(100% + 5px);">
+                            <div role="option" data-value="Apartamento">Apartamento</div>
+                            <div role="option" data-value="Casas">Casas</div>
+                            <div role="option" data-value="Oficinas">Oficinas</div>
+                            <div role="option" data-value="Commercial">Commercial</div>
+                            <div role="option" data-value="Propiedades de playa">Propiedades de playa</div>
+                            <div role="option" data-value="Terreros">Terreros</div>
+                            <div role="option" data-value="Propiedades de Islas">Propiedades de Islas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2: Parameters -->
+        <div class="ap-step-container" id="step2">
+            <h1 class="step-title">Parámetros de la propiedad</h1>
+            <p class="step-subtitle">Comparte los detalles básicos sobre el espacio.</p>
+            
+            <div class="form-row" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label>Rec</label>
+                    <div class="custom-dropdown" role="button" tabindex="0" style="border: 1px solid #ddd; height: 50px; border-radius: 10px; position: relative;">
+                        <span class="selected-label">Beds..</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                        <div class="dropdown-options" style="width: 100%; top: calc(100% + 5px);">
+                            <div role="option" data-value="Estudio">Estudio</div>
+                            <div role="option" data-value="1 Rec">1 Rec</div>
+                            <div role="option" data-value="2 Rec">2 Rec</div>
+                            <div role="option" data-value="3 Rec">3 Rec</div>
+                            <div role="option" data-value="4+ Rec">4+ Rec</div>
+                            <div role="option" data-value="Other">Other</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Baños</label>
+                    <div class="custom-dropdown" role="button" tabindex="0" style="border: 1px solid #ddd; height: 50px; border-radius: 10px; position: relative;">
+                        <span class="selected-label">Baths..</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                        <div class="dropdown-options" style="width: 100%; top: calc(100% + 5px); max-height: 200px; overflow-y: auto;">
+                            <div role="option" data-value="No Baño">No Baño</div>
+                            <div role="option" data-value="Baño">Baño</div>
+                            <div role="option" data-value="1.5 Bath">1.5 Bath</div>
+                            <div role="option" data-value="2 Baños">2 Baños</div>
+                            <div role="option" data-value="2.5 Baths">2.5 Baths</div>
+                            <div role="option" data-value="3 Baños">3 Baños</div>
+                            <div role="option" data-value="3.5 Baths">3.5 Baths</div>
+                            <div role="option" data-value="4+ Baños">4+ Baños</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Parking</label>
+                    <div class="custom-dropdown" role="button" tabindex="0" style="border: 1px solid #ddd; height: 50px; border-radius: 10px; position: relative;">
+                        <span class="selected-label">Parking</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                        <div class="dropdown-options" style="width: 100%; top: calc(100% + 5px);">
+                            <div role="option" data-value="none">none</div>
+                            <div role="option" data-value="1">1</div>
+                            <div role="option" data-value="2">2</div>
+                            <div role="option" data-value="3">3</div>
+                            <div role="option" data-value="4+">4+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label>Metros cuadrados (Sqm) *</label>
+                    <input type="number" class="modern-input" placeholder="Ej. 120">
+                </div>
+                <div class="form-group">
+                    <label>Año de construcción</label>
+                    <input type="number" class="modern-input" placeholder="Ej. 2015">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Piso Número (Si aplica)</label>
+                <input type="number" class="modern-input" placeholder="Ej. 5">
+            </div>
+
+            <div class="switch-row">
+                <span class="counter-label">Aceptan Gatos</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="switch-row">
+                <span class="counter-label">Aceptan Perros</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- STEP 3: Amenities -->
+        <div class="ap-step-container" id="step3">
+            <h1 class="step-title">Servicios disponibles</h1>
+            <p class="step-subtitle">Selecciona todas las amenidades que tiene tu propiedad.</p>
+            
+            <div class="amenities-grid" id="amenitiesGrid">
+                <div class="amenity-pill">Aire acondicionado</div>
+                <div class="amenity-pill">Balcón / Patio</div>
+                <div class="amenity-pill">Piscina</div>
+                <div class="amenity-pill">Gimnasio</div>
+                <div class="amenity-pill">Seguridad 24 Horas</div>
+                <div class="amenity-pill">Acceso controlado</div>
+                <div class="amenity-pill">Lavadora / secadora</div>
+                <div class="amenity-pill">Estacionamiento de visitas</div>
+                <div class="amenity-pill">Amoblado</div>
+                <div class="amenity-pill">Área Social</div>
+                <div class="amenity-pill">Vista al Mar</div>
+                <div class="amenity-pill">Pet Friendly</div>
+                <div class="amenity-pill">Ascensor</div>
+                <div class="amenity-pill">Planta Eléctrica</div>
+            </div>
+        </div>
+
+        <!-- STEP 4: Location -->
+        <div class="ap-step-container" id="step4">
+            <h1 class="step-title">¿Dónde se ubica?</h1>
+            <p class="step-subtitle">Ingresa la dirección o mueve el pin en el mapa.</p>
+            
+            <div class="form-group" style="position: relative; z-index: 2000;">
+                <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-medium); z-index: 2;"></i>
+                <input type="text" id="mapSearchInput" class="modern-input" placeholder="Escribe para buscar (ej. Albrook, Panamá)" style="padding-left: 45px; position: relative; z-index: 1;" autocomplete="off">
+                <div id="mapSearchResults" class="dropdown-options" style="width: 100%; top: calc(100% + 5px); display: none; max-height: 250px; overflow-y: auto; z-index: 2001; left: 0; padding: 5px 0;"></div>
+            </div>
+
+            <div class="map-container">
+                <div id="propertyMap"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Ciudad *</label>
+                    <input type="text" class="modern-input" placeholder="Ciudad">
+                </div>
+                <div class="form-group">
+                    <label>Provincia</label>
+                    <input type="text" class="modern-input" placeholder="Provincia">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Calle / Avenida *</label>
+                <input type="text" class="modern-input" placeholder="Ej. Calle 50">
+            </div>
+
+            <div class="form-group">
+                <label>Edificio / Casa #</label>
+                <input type="text" class="modern-input" placeholder="Ej. PH Oasis, Apto 4A">
+            </div>
+        </div>
+
+        <!-- STEP 5: Description & Price -->
+        <div class="ap-step-container" id="step5">
+            <h1 class="step-title">Precio y Descripción</h1>
+            <p class="step-subtitle">Establece el precio y cuenta qué hace especial tu propiedad.</p>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Precio *</label>
+                    <div style="position:relative;">
+                        <span style="position:absolute; left:15px; top:50%; transform:translateY(-50%); font-weight:bold; color:var(--text-medium);">$</span>
+                        <input type="number" class="modern-input" placeholder="0.00" style="padding-left:35px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de pago *</label>
+                    <div class="custom-dropdown" role="button" tabindex="0" style="border: 1px solid #ddd; height: 50px; border-radius: 10px; position: relative;">
+                        <span class="selected-label">Pagar por mes</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                        <div class="dropdown-options" style="width: 100%; top: calc(100% + 5px);">
+                            <div role="option" data-value="Pagar por mes">Pagar por mes</div>
+                            <div role="option" data-value="Pago total (Venta)">Pago total (Venta)</div>
+                            <div role="option" data-value="Pagar por semana">Pagar por semana</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Mantenimiento (Opcional)</label>
+                    <input type="number" class="modern-input" placeholder="$ 0.00">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de contacto *</label>
+                    <input type="tel" class="modern-input" placeholder="+507 6000-0000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Breve descripción (Título) *</label>
+                <input type="text" class="modern-input" placeholder="Ej. Hermoso apartamento con vista al mar">
+            </div>
+
+            <div class="form-group">
+                <label>Descripción completa de la propiedad</label>
+                <textarea class="modern-input" placeholder="Describe los detalles, ubicación, amenidades, etc..."></textarea>
+            </div>
+        </div>
+
+        <!-- STEP 6: Photos -->
+        <div class="ap-step-container" id="step6">
+            <h1 class="step-title">Agrega fotos</h1>
+            <p class="step-subtitle">Sube al menos 3 fotos para que tu anuncio destaque.</p>
+            
+            <div class="upload-zone" onclick="document.getElementById('photoUpload').click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Arrastra y suelta tus fotos aquí</p>
+                <span>O haz clic para examinar (Máx 10MB)</span>
+                <input type="file" id="photoUpload" multiple accept="image/*" style="display:none;">
+            </div>
+
+            <!-- Preview Container would go here via JS -->
+            <div style="margin-top:2rem; display:flex; gap:10px; flex-wrap:wrap;" id="photoPreviewArea">
+                <!-- Example of uploaded photo placeholder -->
+                <div style="width:100px; height:100px; background:#e0e0e0; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#999;">
+                    <i class="fas fa-image" style="font-size:2rem;"></i>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Sticky Footer Navigation -->
+    <footer class="ap-footer">
+        <div class="ap-footer-content">
+            <button class="btn-back" id="btnBack" disabled>Regresar</button>
+            <button class="btn-next" id="btnNext">Continuar</button>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./js/add-property.js"></script>
+</body>
+</html>
