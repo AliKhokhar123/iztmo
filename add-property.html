@@ -135,9 +135,31 @@
         }
 
         @media (max-width: 900px) {
-            body { overflow-y: auto; } /* Allow body scroll on mobile */
-            .ap-main { padding: 1.5rem; }
-            .ap-footer-embedded { padding: 1rem 1.5rem; }
+            body { 
+                height: auto !important;
+                min-height: 100vh;
+                overflow-y: auto !important; 
+                display: block;
+            }
+            .dashboard-wrapper, .dashboard-inner-container, .dashboard-main, .add-property-card-content {
+                display: block !important;
+                height: auto !important;
+                min-height: auto !important;
+                overflow: visible !important;
+            }
+            .dashboard-sidebar {
+                display: none; /* Hide sidebar on mobile to maximize form space */
+            }
+            .ap-main { 
+                padding: 1.5rem 1rem; 
+                overflow-y: visible;
+            }
+            .ap-footer-embedded { 
+                padding: 1rem; 
+                position: sticky;
+                bottom: 0;
+                box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+            }
         }
     </style>
 </head>
