@@ -64,35 +64,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionsBox = dropdown.querySelector('.dropdown-options');
         const selectedLabel = dropdown.querySelector('.selected-label');
 
-        dropdown.addEventListener('click', (e) => {
-            if (e.target.closest('.dropdown-options')) return;
-            const isOpen = optionsBox.classList.contains('show');
-            // Close all others first
-            document.querySelectorAll('.dropdown-options').forEach(opt => {
-                opt.classList.remove('show');
-                opt.closest('.custom-dropdown').classList.remove('show');
+        if (optionsBox && selectedLabel) {
+            dropdown.addEventListener('click', (e) => {
+                if (e.target.closest('.dropdown-options')) return;
+                const isOpen = optionsBox.classList.contains('show');
+                
+                // Close all others first
+                document.querySelectorAll('.dropdown-options').forEach(opt => {
+                    opt.classList.remove('show');
+                    const parent = opt.closest('.custom-dropdown');
+                    if (parent) {
+                        parent.classList.remove('show');
+                    }
+                });
+                
+                if (!isOpen) {
+                    optionsBox.classList.add('show');
+                    dropdown.classList.add('show');
+                }
             });
-            if (!isOpen) {
-                optionsBox.classList.add('show');
-                dropdown.classList.add('show');
-            }
-        });
 
-        const options = optionsBox.querySelectorAll('[role="option"]');
-        options.forEach(opt => {
-            opt.addEventListener('click', () => {
-                selectedLabel.textContent = opt.dataset.value;
-                optionsBox.classList.remove('show');
-                dropdown.classList.remove('show');
+            const options = optionsBox.querySelectorAll('[role="option"]');
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    selectedLabel.textContent = opt.dataset.value;
+                    optionsBox.classList.remove('show');
+                    dropdown.classList.remove('show');
+                });
             });
-        });
+        }
     });
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.custom-dropdown')) {
             document.querySelectorAll('.dropdown-options').forEach(opt => {
                 opt.classList.remove('show');
-                opt.closest('.custom-dropdown').classList.remove('show');
+                const parent = opt.closest('.custom-dropdown');
+                if (parent) {
+                    parent.classList.remove('show');
+                }
             });
         }
     });
